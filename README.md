@@ -2,18 +2,18 @@
 
 - Project Page -> 🔗 [Password Generator](https://eupedrobarbosa03.github.io/password-generator/)
 
-## Featues 💻 ##
+## Features 💻 ##
 - ✅ Robust verification on code with messages personalized in interface.
 - ✅ System/Project responsive for all screens.
 - ✅ Possibility the toggle theme: Dark Mode/Light Mode.
 - ✅ Possibility the choice length password.
 
-## Tecnologies ## 🛠️
+## Tecnologies 🛠️ ## 
 - HTML5
 - CSS3
 - JAVASCRIPT
 
-## Applied Concepts ## 📖
+## Applied Concepts 📖 ## 
 - ✅ DOM.
 - ✅ Responsiveness.
 - ✅ Objects with entries method: `Object.entries()`.
