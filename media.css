@@ -1,0 +1,47 @@
+@media screen and (max-width: 844px) {
+
+    #main-container {
+        padding: 1rem 0;
+    }
+
+    #div-container {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    #main-container {
+        padding: 0;
+        height: 100vh;
+    }
+
+    #div-container {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 498px) {
+
+    #main-container {
+        padding: 0;
+        height: 100vh;
+    }
+
+    #div-container {
+        width: 100%;
+    }
+
+    #button-generator-password {
+        margin-top: 20px;
+    }
+
+    #message-error {
+        font-size: .6rem;
+    }
+
+    #result-password h2 {
+        font-size: .9rem;
+    }
+
+}
