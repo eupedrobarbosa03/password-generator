@@ -1,4 +1,20 @@
 ## Password Generator - System Developed by Pedro. ## 
 
-- Robust verification with messages personalized
-- 
+- Project Page -> 🔗 (Generator Password)[]
+
+## Featues ## 💻
+- ✅ Robust verification on code with messages personalized in interface.
+- ✅ System/Project responsive for all screens.
+- ✅ Possibility the toggle theme: Dark Mode/Light Mode.
+- ✅ Possibility the choice length password.
+
+## Tecnologies ## 🛠️
+- HTML5
+- CSS3
+- JAVASCRIPT
+
+## Applied Concepts ## 📖
+- ✅ DOM.
+- ✅ Responsiveness.
+- ✅ Objects with entries method: `Object.entries()`.
+- ✅ OOP.
