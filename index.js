@@ -1,112 +1,66 @@
+localStorage.setItem("passwords", JSON.stringify([]));
+
 const buttonGeneratorPassword = document.querySelector("#button-generator-password");
-const password = document.querySelector("#password");
-const passwordLenght = document.querySelector("#lenght-password");
-const messageError = document.querySelector("#message-error");
+const showPassword = document.querySelector("#password");
+const lengthPassowrd = document.querySelector("[data-range]");
+const range = document.querySelector("#range");
 
-const themeProperties = {
-    changeTheme: document.querySelector("#button-change-theme"),
-    mainTheme: document.querySelector("#main-container"),
-    titleTheme: document.querySelector("#result-password h2"),
-    resultBoxTheme: document.querySelector("#result-password"),
-    inputTheme: document.querySelector("#lenght-password"),
-    detailsBoxTheme: document.querySelector("#insert-details-password")
-}
-
-function randomChoiceOneCharacterer(possibilityTarget) {
-    possibilityTarget = possibilityTarget.split("");
-
-    let randomValue = Math.floor(Math.random() * possibilityTarget.length);
-    let value = possibilityTarget[randomValue];
-
-    return value;
-}
-
-function textError(element, text) {
-    element.textContent = text;
-}
+const buttonChangeTheme = document.querySelector("#button-change-theme");
 
 class Generator {
-    constructor(passwordLenght_) {
-        this.passwordLenght_ = passwordLenght_;
-        this.passwordCombinations = {
+    #length
+    constructor(length) {
+        this.#length = length;
+        this.combinations = {
             numbers: "1234567890",
             letterLower: "abcdefghijklmnopqrstuvwxyz",
-            letterUpper: "", // Convert lower to Upper;
-            symbols: "!@#$&()-"
+            symbols: "!@#$%&()-_+"
         }
     }
 
-    password() {
+    getSingleValueString(string) {
+        const random = Math.floor(Math.random() * string.length);
+        string = string.split("");
+        return string[random];
+    }
 
-        this.passwordLenght_ = Number(this.passwordLenght_);
+    generator() {
 
-        if (!this.passwordLenght_ || this.passwordLenght_ < 4 || this.passwordLenght_ > 30) {
-            if (!passwordLenght.value) {
-                password.classList.remove("password-active");
-                textError(messageError, "Minimum Lenght: 4 and Maximum Lenght: 30.")
+        let chars = [];
+        const { numbers, letterLower, symbols } = this.combinations;
+
+        for (let i = 0; i < this.#length; i++) {
+            const values = [
+                this.getSingleValueString(numbers),
+                this.getSingleValueString(letterLower),
+                this.getSingleValueString(letterLower.toUpperCase()),
+                this.getSingleValueString(symbols)
+            ];
+            const randomValue = values[Math.floor(Math.random() * values.length)];
+            if (chars.includes(randomValue)) {
+                i--;
+                continue;
             }
-            messageError.classList.add("message-error-active");
-            return;
+            chars.push(randomValue)
         }
 
-        messageError.classList.remove("message-error-active");
-
-        this.passwordCombinations.letterUpper = this.passwordCombinations.letterLower.toUpperCase();
-
-        const {numbers, letterLower, letterUpper, symbols} = this.passwordCombinations;
-
-        const possibilities = [numbers, letterLower, letterUpper, symbols];
-        let listPassword = []; //convert to string;
-        
-
-        for (let i = 0; i < this.passwordLenght_; i++) {
-            let possibilitiesRandom = Math.floor(Math.random() * possibilities.length);
-            switch(possibilitiesRandom) {
-                case 0: //numbers
-                    listPassword.push(randomChoiceOneCharacterer(possibilities[0]));
-                    break;
-                case 1: //letters lower
-                    listPassword.push(randomChoiceOneCharacterer(possibilities[1]));
-                    break;
-                case 2: //letters upper
-                    listPassword.push(randomChoiceOneCharacterer(possibilities[2])); 
-                    break;
-                case 3: //symbols
-                    listPassword.push(randomChoiceOneCharacterer(possibilities[3]));
-                    break;
-            }
-        }
-
-        const passwordPost = listPassword.join("");
-        password.classList.add("password-active");
-        password.textContent = `${passwordPost}`;
+        const password = chars.join("");
+        showPassword.textContent = `${password}`;
+        showPassword.classList.add("password-active");
+        const storage = JSON.parse(localStorage.getItem("passwords"));
+        storage.push(password);
+        localStorage.setItem("passwords", JSON.stringify(storage));
 
     }
 }
 
-function generator() {
-    const passwordGet = new Generator(passwordLenght.value);
-    passwordGet.password();
-}
+lengthPassowrd.addEventListener("input", () => {
+    range.textContent = lengthPassowrd.value
+    lengthPassowrd.value = lengthPassowrd.value;
+});
 
 buttonGeneratorPassword.addEventListener("click", () => {
-    generator();
-})
+    const password = new Generator(lengthPassowrd.value);
+    password.generator();
+});
 
-passwordLenght.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-        generator();
-    }
-
-    if (e.key === "Delete") {
-        password.classList.remove("password-active");
-    }
-})
-
-themeProperties.changeTheme.addEventListener("click", () => {
-
-    Object.entries(themeProperties).forEach(([, valor]) => {
-        valor.classList.toggle("change-theme")
-    })
-    
-})

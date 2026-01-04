@@ -40,6 +40,7 @@
     text-transform: uppercase;
     text-align: center;
     margin-top: 20px;
+    font-size: 1.2rem;
 }
 
 #result-password #password {
@@ -66,88 +67,36 @@
 }
 
 input {
-    padding: .7rem;
     width: 30%;
     background-color: transparent;
     border: 1px solid #333;
     color: #f1f1f1;
+    margin-top: 5px;
+    cursor: pointer;
 }
 
 input:focus {
     outline: none;
 }
 
-input::placeholder {
-    font-size: .7rem;
-}
-
 #button-generator-password {
-    background-color: #14f;
+    background-color: #173ab9;
     color: #f1f1f1;
     box-shadow: 1px 1px 2px #14f;
     border: none;
     margin-top: 15px;
-    width: 80px;
+    width: 100px;
     text-align: center;
-    height: 30px;
-    font-size: .7rem;
-    transition: .8s ease all;
+    height: 40px;
+    font-size: .8rem;
+    transition: .3s ease all;
+    cursor: pointer;
 }
 
 #button-generator-password:hover {
-    box-shadow: 1px 1px 10px #14f;
+    box-shadow: 1px 1px 5px #14f;
 }
 
-#message-error {
-    position: relative;
-    color: #f72e2e;
-    font-size: .8rem;
-    top: 5px;
-    opacity: 0;
-    transition: .2s;
-}
-
-#message-error.message-error-active {
-    opacity: 1;
-}
-
-#button-change-theme {
-    position: absolute;
-    height: 35px;
-    width: 35px;
-    top: 10px;
-    left: 10px;
-    border-radius: 50%;
-    border: none;
-    pointer-events: painted;
-}
-
-#button-change-theme:hover {
-    box-shadow: 1px 1px 10px #f1f1f1;
-}
-
-#button-change-theme.change-theme {
-    background-color: #050505;
-}
-
-#button-change-theme.change-theme:hover {
-    box-shadow: 1px 1px 10px #050505;
-}
-
-#main-container.change-theme {
-    background-color: #f1f1f1;
-}
-
-#result-password.change-theme,
-input.change-theme,
-#insert-details-password.change-theme {
-    border: 1px solid #33333330;
-}
-
-#result-password h2.change-theme {
-    color: #050505;
-}
-
-input.change-theme {
-    color: #050505;
+.range_password {
+    color: #f9f9f9;
 }

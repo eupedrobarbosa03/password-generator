@@ -8,21 +8,19 @@
     <title>Generator Password</title>
 </head>
 <body>
-
-    <button id="button-change-theme"></button>
     
     <main id="main-container">
         <div id="div-container">
 
             <section id="result-password">
-                <h2>your Password</h2>
+                <h2>Senha gerada</h2>
                 <p id="password"></p>
             </section>
 
             <section id="insert-details-password">
-                <input type="text" id="lenght-password" placeholder="Lenght">
-                <button id="button-generator-password">Password</button>
-                <span id="message-error"></span>
+                <p class="range_password">Tamanho da senha: <span id="range">5</span></p>
+                <input type="range" data-range min="5" max="30" value="5">
+                <button id="button-generator-password">Gerar</button>
             </section>
 
         </div>
